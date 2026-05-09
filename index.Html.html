@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HaneenTrading | منصة التداول الاحترافية</title>
+    
+    <!-- ========== كود Botpress Chatbot (بوت المحادثة الذكي) ========== -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/05/05/09/20260505094804-94HPRU6B.js" defer></script>
+    
+    <!-- تخصيص شكل ومكان البوت حسب اللغة -->
+    <script>
+    window.botpressWebChat = window.botpressWebChat || [];
+    
+    // وظيفة لتحديد مكان البوت حسب اتجاه اللغة
+    function updateBotPosition() {
+        const isRTL = document.documentElement.dir === 'rtl';
+        // تغيير مكان الأيقونة: RTL = يمين، LTR = يسار
+        const position = isRTL ? 'right' : 'left';
+        
+        // إرسال أمر لتحديث مكان الويدجت
+        if (window.botpressWebChat.sendEvent) {
+            window.botpressWebChat.sendEvent({
+                type: 'setConfig',
+                config: {
+                    layout: {
+                        position: position,
+                        sideMargin: 20,
+                        bottomMargin: 20
+                    }
+                }
+            });
+        }
+    }
+    
+    // انتظار تحميل البوت ثم تحديث مكانه
+    window.botpressWebChat.onload = function() {
+        // تخصيص ألوان البوت لتتناسب مع HaneenTrading
+        window.botpressWebChat.sendEvent({
+            type: 'setTheme',
+            theme: {
+                backgroundColor: '#8b6914',
+                foregroundColor: '#ffffff',
+                primaryColor: '#c9a03d',
+                secondaryColor: '#1a1a1a',
+                fontFamily: 'Cairo, sans-serif'
+            }
+        });
+        
+        // تحديث مكان الأيقونة
+        updateBotPosition();
+    };
+    
+    // مراقبة تغيير اللغة وتحديث مكان الأيقونة
+    window.addEventListener('load', function() {
+        // مراقبة زر تغيير اللغة
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            const observer = new MutationObserver(function() {
+                setTimeout(updateBotPosition, 100);
+            });
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
+        }
+    });
+    </script>
+    <!-- ========================================== -->
+    
+    <!-- ========== كود حماية الشاشة السوداء ========== -->
+    <script>
+    (function() {
+        'use strict';
+        
+        let isBlackScreenActive = false;
+        
+        function activateBlackScreen() {
+            if (isBlackScreenActive) return;
+            isBlackScreenActive = true;
+            
+            document.body.innerHTML = '';
+            document.head.innerHTML = '';
+            
+            const blackDiv = document.createElement('div');
+            blackDiv.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #000000;
+                z-index: 9999999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-align: center;
+            `;
+            blackDiv.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 50px; margin-bottom: 20px;">🚫</div>
+                    <h2>تم تعطيل الوصول</h2>
+                    <p style="margin-top: 10px; color: #888;">التقاط الشاشة غير مسموح به</p>
+                    <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 30px; background: #8b6914; color: white; border: none; border-radius: 50px; cursor: pointer;">إعادة تحميل</button>
+                </div>
+            `;
+            document.body.appendChild(blackDiv);
+            document.body.style.overflow = 'hidden';
+        }
+        
+        window.addEventListener('blur', function() { activateBlackScreen(); });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'PrintScreen' || e.key === 'PrtScn' || e.keyCode === 44) {
+                e.preventDefault();
+                activateBlackScreen();
+            }
+        });
+        
+        document.onkeydown = function(e) {
+            if (e.key === 'F12' || e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                activateBlackScreen();
+                return false;
+            }
+        };
+        
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        console.log('✅ HaneenTrading - الحماية مفعلة');
+    })();
+    </script>
+    <!-- ========================================== -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #faf9f7;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #8a8a8a;
+            --border: #e8e4df;
+            --accent-brown: #8b6914;
+            --accent-gold: #c9a03d;
+            --accent-success: #2e7d32;
+            --accent-danger: #c62828;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        body.dark {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-card: #252525;
+            --text-primary: #f5f5f5;
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --border: #333333;
+            --accent-brown: #c9a03d;
+            --accent-gold: #d4af37;
+        }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: all 0.3s ease; }
+        .header { position: sticky; top: 0; z-index: 1000; background: var(--bg-secondary); backdrop-filter: blur(12px); border-bottom: 2px solid var(--accent-gold); box-shadow: var(--shadow); }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+        .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; flex-wrap: wrap; gap: 1rem; }
+        .logo h1 { font-size: 1.8rem; font-weight: 800; color: var(--accent-brown); }
+        .logo span { color: var(--accent-gold); }
+        .nav-tabs { display: flex; gap: 0.5rem; background: var(--bg-secondary); padding: 0.3rem; border-radius: 60px; border: 1px solid var(--border); }
+        .tab-btn { padding: 0.6rem 1.5rem; border: none; background: transparent; border-radius: 50px; font-weight: 600; cursor: pointer; color: var(--text-secondary); transition: all 0.3s; }
+        .tab-btn.active { background: var(--accent-brown); color: white; }
+        .tab-btn:hover:not(.active) { background: var(--accent-gold); color: white; }
+        .search-wrapper { position: relative; }
+        .search-input { padding: 0.6rem 1rem 0.6rem 2.5rem; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-primary); width: 220px; }
+        .search-input:focus { outline: none; border-color: var(--accent-gold); }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .btn { padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-primary { background: var(--accent-brown); color: white; }
+        .btn-primary:hover { background: var(--accent-gold); }
+        .btn-outline { background: transparent; border: 1px solid var(--accent-brown); color: var(--accent-brown); }
+        .icon-btn { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 50%; width: 38px; height: 38px; cursor: pointer; }
+        .hero { text-align: center; padding: 3rem 0 2rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--accent-brown); }
+        .stats { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-gold); }
+        .section-title { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1.5rem; border-right: 4px solid var(--accent-gold); padding-right: 1rem; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .market-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
+        .market-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent-gold); }
+        .price { font-size: 1.8rem; font-weight: 800; margin: 0.5rem 0; color: var(--accent-brown); }
+        .positive { color: var(--accent-success); }
+        .negative { color: var(--accent-danger); }
+        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .chart-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 1rem; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .news-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.2rem; transition: all 0.3s; }
+        .news-card:hover { border-color: var(--accent-gold); }
+        .fav-btn { background: transparent; border: 1px solid var(--border); border-radius: 50px; padding: 0.3rem 1rem; margin-top: 0.8rem; cursor: pointer; color: var(--accent-gold); }
+        .fav-btn.active { background: var(--accent-gold); color: white; }
+        .support-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 2rem; text-align: center; margin: 2rem 0; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--bg-card); border-radius: 28px; max-width: 500px; width: 90%; padding: 2rem; }
+        .modal input { width: 100%; padding: 0.8rem; margin: 0.5rem 0; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 12px; }
+        .section-page { display: none; }
+        .section-page.active-section { display: block; }
+        @media (max-width: 768px) { .container { padding: 0 1rem; } .nav { flex-direction: column; } .nav-tabs { flex-wrap: wrap; justify-content: center; } .charts-row { grid-template-columns: 1fr; } }
+        
+        /* تخصيص إضافي لأيقونة البوت */
+        .bp-webchat-btn {
+            transition: all 0.3s ease !important;
+        }
+        .bp-webchat-btn:hover {
+            transform: scale(1.05) !important;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container nav">
+        <div class="logo"><h1>Haneen<span>Trading</span></h1></div>
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-section="stocks">📈 الأسهم</button>
+            <button class="tab-btn" data-section="crypto">🪙 العملات</button>
+            <button class="tab-btn" data-section="news">📰 الأخبار</button>
+            <button class="tab-btn" data-section="favorites">⭐ مفضلتي</button>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="بحث... AAPL, BTC">
+            </div>
+            <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn" id="langToggle">🇸🇦</button>
+            <div id="authButtons">
+                <button class="btn btn-outline" id="loginBtn">دخول</button>
+                <button class="btn btn-primary" id="signupBtn">تسجيل</button>
+            </div>
+            <div id="userWelcome" style="display: none; align-items: center; gap: 0.5rem;">
+                <span id="welcomeMsg"></span>
+                <button class="btn btn-outline" id="logoutBtn">خروج</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="hero">
+        <h1>تداول بثقة مع HaneenTrading</h1>
+        <p>أسهم أمريكية | عملات رقمية | شارتات مباشرة | أخبار فورية | بوت ذكي للدعم</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item"><div class="stat-number">1.5M+</div><div>مستخدم</div></div>
+        <div class="stat-item"><div class="stat-number">$50B+</div><div>حجم تداول</div></div>
+        <div class="stat-item"><div class="stat-number">24/7</div><div>دعم فني</div></div>
+    </div>
+
+    <div class="charts-row">
+        <div class="chart-card"><div class="chart-title"><i class="fab fa-bitcoin"></i> Bitcoin / USD</div><div id="btc-chart" style="height: 280px;"></div></div>
+        <div class="chart-card"><div class="chart-title"><i class="fab fa-apple"></i> Apple / USD</div><div id="aapl-chart" style="height: 280px;"></div></div>
+    </div>
+
+    <div id="stocks-section" class="section-page active-section">
+        <div class="section-title"><i class="fas fa-chart-line"></i> الأسهم الأمريكية <span style="font-size: 0.8rem; background: var(--accent-danger); color:white; padding:0.2rem 0.6rem; border-radius:20px;">LIVE</span></div>
+        <div id="stocksGrid" class="cards-grid"></div>
+    </div>
+
+    <div id="crypto-section" class="section-page">
+        <div class="section-title"><i class="fab fa-bitcoin"></i> العملات الرقمية <span style="font-size: 0.8rem; background: var(--accent-danger); color:white; padding:0.2rem 0.6rem; border-radius:20px;">LIVE</span></div>
+        <div id="cryptoGrid" class="cards-grid"></div>
+    </div>
+
+    <div id="news-section" class="section-page">
+        <div class="section-title"><i class="fas fa-newspaper"></i> آخر الأخبار المالية</div>
+        <div id="newsGrid" class="news-grid"></div>
+    </div>
+
+    <div id="favorites-section" class="section-page">
+        <div class="section-title"><i class="fas fa-star"></i> قائمة المفضلة</div>
+        <div id="favoritesGrid" class="cards-grid"></div>
+    </div>
+
+    <div class="support-card">
+        <i class="fas fa-headset" style="font-size: 2rem; color: var(--accent-gold);"></i>
+        <h3>خدمة العملاء</h3>
+        <p><i class="fas fa-envelope"></i> rfayhnyn6@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +966 0538216501</p>
+        <p style="margin-top: 0.5rem;"><i class="fas fa-comment-dots"></i> تواصل مع بوت المساعدة الذكي (الأيقونة في الزاوية)</p>
+    </div>
+</main>
+
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+            <h2 id="modalTitle">تسجيل الدخول</h2>
+            <button onclick="closeModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script>
+    const stocks = [
+        { symbol: "AAPL", name: "Apple Inc.", price: 175.34, changePercent: 0.69 },
+        { symbol: "MSFT", name: "Microsoft", price: 420.85, changePercent: 0.82 },
+        { symbol: "NVDA", name: "NVIDIA", price: 128.44, changePercent: 4.22 },
+        { symbol: "TSLA", name: "Tesla", price: 248.50, changePercent: -1.66 },
+        { symbol: "AMZN", name: "Amazon", price: 178.22, changePercent: 1.05 },
+        { symbol: "GOOGL", name: "Google", price: 142.65, changePercent: 0.67 }
+    ];
+
+    const cryptos = [
+        { symbol: "BTC", name: "Bitcoin", price: 67250, changePercent: 1.89 },
+        { symbol: "ETH", name: "Ethereum", price: 3320, changePercent: -1.34 },
+        { symbol: "SOL", name: "Solana", price: 176.80, changePercent: 4.99 },
+        { symbol: "BNB", name: "Binance", price: 582, changePercent: 2.11 }
+    ];
+
+    const newsData = [
+        { title: "الأسهم الأمريكية تغلق مرتفعة مع تفاؤل حيال خفض الفائدة", date: "2025-04-11", source: "Bloomberg" },
+        { title: "بيتكوين تقترب من 70 ألف دولار مع تدفقات صناديق الاستثمار", date: "2025-04-10", source: "Reuters" },
+        { title: "تسلا تعلن عن سيارة جديدة بسعر اقتصادي", date: "2025-04-09", source: "CNBC" },
+        { title: "الاحتياطي الفيدرالي يلمح لخفض الفائدة قريباً", date: "2025-04-08", source: "WSJ" }
+    ];
+
+    let currentLang = "ar";
+    let currentUser = null;
+    let favorites = [];
+
+    function loadFavorites() {
+        if (currentUser) {
+            const saved = localStorage.getItem(`fav_${currentUser}`);
+            favorites = saved ? JSON.parse(saved) : [];
+        } else { favorites = []; }
+        renderFavorites(); renderStocks(); renderCrypto();
+    }
+
+    function saveFavorites() { if (currentUser) localStorage.setItem(`fav_${currentUser}`, JSON.stringify(favorites)); }
+
+    function toggleFavorite(symbol) {
+        if (!currentUser) { alert("الرجاء تسجيل الدخول أولاً لإضافة مفضلة"); return; }
+        if (favorites.includes(symbol)) { favorites = favorites.filter(s => s !== symbol); }
+        else { favorites.push(symbol); }
+        saveFavorites(); loadFavorites();
+    }
+
+    function isFavorite(symbol) { return favorites.includes(symbol); }
+
+    function renderStocks() {
+        const grid = document.getElementById('stocksGrid');
+        if (!grid) return;
+        grid.innerHTML = stocks.map(s => `
+            <div class="market-card" onclick="showChart('${s.symbol}')">
+                <div style="display:flex; justify-content:space-between;"><div><strong>${s.name}</strong><div style="font-size:0.7rem; color:var(--text-muted);">${s.symbol}</div></div><i class="fas fa-chart-line" style="opacity:0.5;"></i></div>
+                <div class="price">$${s.price.toFixed(2)}</div>
+                <div class="${s.changePercent >= 0 ? 'positive' : 'negative'}">${s.changePercent >= 0 ? '▲' : '▼'} ${Math.abs(s.changePercent).toFixed(2)}%</div>
+                <button class="fav-btn ${isFavorite(s.symbol) ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite('${s.symbol}')">${isFavorite(s.symbol) ? '★ مفضلة' : '☆ أضف للمفضلة'}</button>
+            </div>
+        `).join('');
+    }
+
+    function renderCrypto() {
+        const grid = document.getElementById('cryptoGrid');
+        if (!grid) return;
+        grid.innerHTML = cryptos.map(c => `
+            <div class="market-card" onclick="showChart('${c.symbol}')">
+                <div style="display:flex; justify-content:space-between;"><div><strong>${c.name}</strong><div style="font-size:0.7rem; color:var(--text-muted);">${c.symbol}</div></div><i class="fab fa-bitcoin" style="opacity:0.5;"></i></div>
+                <div class="price">$${c.price.toLocaleString()}</div>
+                <div class="${c.changePercent >= 0 ? 'positive' : 'negative'}">${c.changePercent >= 0 ? '▲' : '▼'} ${Math.abs(c.changePercent).toFixed(2)}%</div>
+                <button class="fav-btn ${isFavorite(c.symbol) ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite('${c.symbol}')">${isFavorite(c.symbol) ? '★ مفضلة' : '☆ أضف للمفضلة'}</button>
+            </div>
+        `).join('');
+    }
+
+    function renderFavorites() {
+        const grid = document.getElementById('favoritesGrid');
+        if (!grid) return;
+        const allItems = [...stocks.map(s => ({ ...s })), ...cryptos.map(c => ({ ...c }))];
+        const favItems = allItems.filter(item => favorites.includes(item.symbol));
+        if (favItems.length === 0) { grid.innerHTML = '<div class="market-card" style="text-align:center;">لا توجد مفضلات بعد. أضف أسهمك المفضلة ❤️</div>'; return; }
+        grid.innerHTML = favItems.map(item => `
+            <div class="market-card" onclick="showChart('${item.symbol}')">
+                <div style="display:flex; justify-content:space-between;"><div><strong>${item.name}</strong><div style="font-size:0.7rem;">${item.symbol}</div></div><i class="fas fa-star" style="color:var(--accent-gold);"></i></div>
+                <div class="price">$${item.price.toLocaleString()}</div>
+                <button class="fav-btn active" onclick="event.stopPropagation(); toggleFavorite('${item.symbol}')">★ إزالة</button>
+            </div>
+        `).join('');
+    }
+
+    function renderNews() {
+        const grid = document.getElementById('newsGrid');
+        if (grid) { grid.innerHTML = newsData.map(n => `<div class="news-card"><div class="news-title">📰 ${n.title}</div><div style="font-size:0.7rem; color:var(--text-muted);">${n.date} | ${n.source}</div></div>`).join(''); }
+    }
+
+    function initCharts() {
+        const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+        if (typeof TradingView !== 'undefined') {
+            new TradingView.widget({ width: "100%", height: 280, symbol: "BITSTAMP:BTCUSD", interval: "D", theme: theme, locale: currentLang === "ar" ? "ar" : "en", container_id: "btc-chart" });
+            new TradingView.widget({ width: "100%", height: 280, symbol: "NASDAQ:AAPL", interval: "D", theme: theme, locale: currentLang === "ar" ? "ar" : "en", container_id: "aapl-chart" });
+        }
+    }
+
+    window.showChart = (symbol) => {
+        const modal = document.getElementById('authModal');
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `<div id="tempChart" style="height: 400px;"></div><button class="btn btn-primary" onclick="closeModal()" style="width:100%; margin-top:1rem;">إغلاق</button>`;
+        document.getElementById('modalTitle').innerText = `${symbol} - شارت تفاعلي`;
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            if (typeof TradingView !== 'undefined') {
+                new TradingView.widget({ width: "100%", height: 400, symbol: symbol === 'BTC' || symbol === 'ETH' ? `BITSTAMP:${symbol}USD` : `NASDAQ:${symbol}`, interval: "D", theme: theme, locale: currentLang === "ar" ? "ar" : "en", container_id: "tempChart" });
+            }
+        }, 100);
+    };
+
+    function switchSection(sectionId) {
+        document.querySelectorAll('.section-page').forEach(section => section.classList.remove('active-section'));
+        document.getElementById(`${sectionId}-section`).classList.add('active-section');
+        document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active'); if (btn.getAttribute('data-section') === sectionId) btn.classList.add('active'); });
+    }
+
+    function updateLanguage() {
+        const langBtn = document.getElementById('langToggle');
+        if (currentLang === 'ar') { langBtn.innerHTML = '🇬🇧 EN'; document.documentElement.dir = 'rtl'; }
+        else { langBtn.innerHTML = '🇸🇦 عربي'; document.documentElement.dir = 'ltr'; }
+        initCharts();
+        // تحديث مكان أيقونة البوت بعد تغيير اللغة
+        setTimeout(() => {
+            if (window.botpressWebChat && window.botpressWebChat.sendEvent) {
+                const isRTL = document.documentElement.dir === 'rtl';
+                window.botpressWebChat.sendEvent({
+                    type: 'setConfig',
+                    config: { layout: { position: isRTL ? 'right' : 'left' } }
+                });
+            }
+        }, 200);
+    }
+
+    function initTheme() {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark') document.body.classList.add('dark');
+        const icon = document.querySelector('#themeToggle i');
+        icon.className = document.body.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function showLoginForm() {
+        document.getElementById('modalBody').innerHTML = `<input type="text" id="loginEmailUser" placeholder="البريد أو اسم المستخدم"><input type="password" id="loginPassword" placeholder="كلمة السر"><button class="btn btn-primary" onclick="handleLogin()" style="width:100%; margin-top:1rem;">دخول</button><p style="text-align:center; margin-top:1rem;"><a href="#" onclick="showSignupForm()">إنشاء حساب جديد</a></p>`;
+        document.getElementById('modalTitle').innerText = 'تسجيل الدخول';
+    }
+
+    function showSignupForm() {
+        document.getElementById('modalBody').innerHTML = `<input type="email" id="signupEmail" placeholder="البريد الإلكتروني"><input type="text" id="signupUsername" placeholder="اسم المستخدم"><input type="password" id="signupPass" placeholder="كلمة السر"><input type="password" id="signupConfirm" placeholder="تأكيد كلمة السر"><button class="btn btn-primary" onclick="handleSignup()" style="width:100%; margin-top:1rem;">إنشاء حساب</button><p style="text-align:center; margin-top:1rem;"><a href="#" onclick="showLoginForm()">لديك حساب؟ تسجيل دخول</a></p>`;
+        document.getElementById('modalTitle').innerText = 'إنشاء حساب جديد';
+    }
+
+    function handleLogin() {
+        const val = document.getElementById('loginEmailUser')?.value;
+        if (val) { currentUser = val; localStorage.setItem('currentUser', currentUser); document.getElementById('authButtons').style.display = 'none'; document.getElementById('userWelcome').style.display = 'flex'; document.getElementById('welcomeMsg').innerHTML = `مرحباً ${currentUser} ✨`; closeModal(); loadFavorites(); }
+        else alert('الرجاء إدخال اسم المستخدم');
+    }
+
+    function handleSignup() {
+        const user = document.getElementById('signupUsername')?.value;
+        if (user) { currentUser = user; localStorage.setItem('currentUser', currentUser); document.getElementById('authButtons').style.display = 'none'; document.getElementById('userWelcome').style.display = 'flex'; document.getElementById('welcomeMsg').innerHTML = `مرحباً ${currentUser} ✨`; closeModal(); loadFavorites(); }
+        else alert('الرجاء إدخال اسم المستخدم');
+    }
+
+    function logout() { currentUser = null; favorites = []; localStorage.removeItem('currentUser'); document.getElementById('authButtons').style.display = 'flex'; document.getElementById('userWelcome').style.display = 'none'; loadFavorites(); }
+    function closeModal() { document.getElementById('authModal').style.display = 'none'; }
+
+    function setupSearch() {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) { searchInput.addEventListener('input', (e) => { const query = e.target.value.toLowerCase(); const allItems = [...stocks, ...cryptos]; const found = allItems.find(item => item.symbol.toLowerCase() === query || item.name.toLowerCase().includes(query)); if (found) showChart(found.symbol); }); }
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { const section = btn.getAttribute('data-section'); switchSection(section); }); });
+    document.getElementById('themeToggle').addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light'); const icon = document.querySelector('#themeToggle i'); icon.className = document.body.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon'; initCharts(); });
+    document.getElementById('langToggle').addEventListener('click', () => { currentLang = currentLang === 'ar' ? 'en' : 'ar'; localStorage.setItem('lang', currentLang); updateLanguage(); });
+    document.getElementById('loginBtn').addEventListener('click', () => { showLoginForm(); document.getElementById('authModal').style.display = 'flex'; });
+    document.getElementById('signupBtn').addEventListener('click', () => { showSignupForm(); document.getElementById('authModal').style.display = 'flex'; });
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    window.onclick = (e) => { if (e.target.classList.contains('modal')) closeModal(); };
+
+    function init() {
+        initTheme();
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang) currentLang = savedLang;
+        updateLanguage();
+        const savedUser = localStorage.getItem('currentUser');
+        if (savedUser) { currentUser = savedUser; document.getElementById('authButtons').style.display = 'none'; document.getElementById('userWelcome').style.display = 'flex'; document.getElementById('welcomeMsg').innerHTML = `مرحباً ${currentUser} ✨`; }
+        renderStocks(); renderCrypto(); renderNews(); loadFavorites(); initCharts(); setupSearch();
+    }
+    init();
+</script>
+</body>
+</html>
